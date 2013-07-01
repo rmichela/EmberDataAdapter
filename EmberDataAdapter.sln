@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Host", "Host\Host.csproj", "{3A36418B-02FE-44B1-907F-9A51F7ADA798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmberDataAdapter", "EmberDataAdapter\EmberDataAdapter.csproj", "{E5B3C22D-5B7D-4977-9FAD-BF9BFEB6DD9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmberDataAdapterTests", "EmberDataAdapterTests\EmberDataAdapterTests.csproj", "{F4FAB474-F92A-40C9-A0CE-91653DDB90B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A36418B-02FE-44B1-907F-9A51F7ADA798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A36418B-02FE-44B1-907F-9A51F7ADA798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A36418B-02FE-44B1-907F-9A51F7ADA798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A36418B-02FE-44B1-907F-9A51F7ADA798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5B3C22D-5B7D-4977-9FAD-BF9BFEB6DD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5B3C22D-5B7D-4977-9FAD-BF9BFEB6DD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5B3C22D-5B7D-4977-9FAD-BF9BFEB6DD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5B3C22D-5B7D-4977-9FAD-BF9BFEB6DD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4FAB474-F92A-40C9-A0CE-91653DDB90B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4FAB474-F92A-40C9-A0CE-91653DDB90B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4FAB474-F92A-40C9-A0CE-91653DDB90B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4FAB474-F92A-40C9-A0CE-91653DDB90B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
