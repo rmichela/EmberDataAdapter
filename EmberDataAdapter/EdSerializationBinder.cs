@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmberDataAdapter
 {
-    public class EdSerializationBinder : SerializationBinder
+    internal class EdSerializationBinder : SerializationBinder
     {
         public override void BindToName(Type serializedType, out string assemblyName, out string typeName)
         {

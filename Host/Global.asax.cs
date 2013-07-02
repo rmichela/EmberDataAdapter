@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Routing;
+﻿using System.Web.Http;
+using Host.App_Start;
 
 namespace Host
 {
@@ -14,7 +10,6 @@ namespace Host
     {
         protected void Application_Start()
         {
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
         }
     }

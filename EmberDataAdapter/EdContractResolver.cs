@@ -1,10 +1,8 @@
-﻿using System;
-using System.Text;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
 
 namespace EmberDataAdapter
 {
-    public class EdContractResolver : DefaultContractResolver
+    internal class EdContractResolver : DefaultContractResolver
     {
         public EdContractResolver() : base(true)
         {

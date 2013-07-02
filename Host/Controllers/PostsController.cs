@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Host.Models;
 
@@ -10,7 +7,7 @@ namespace Host.Controllers
 {
     public class PostsController : ApiController
     {
-        private IRepository _repository;
+        private readonly IRepository _repository;
 
         public PostsController() : this(new Repository())
         {

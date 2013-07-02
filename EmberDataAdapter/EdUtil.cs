@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EmberDataAdapter
 {
-    public static class EdUtil
+    internal static class EdUtil
     {
         public static string ToEdCase(string identifier)
         {
@@ -24,7 +21,7 @@ namespace EmberDataAdapter
                     {
                         sb.Append('_');
                     }
-                    sb.Append(char.ToLower(c));
+                    sb.Append(Char.ToLower(c));
                     previousUnderscore = false;
                 }
                 else if (c == '_' && !previousUnderscore)
@@ -40,6 +37,16 @@ namespace EmberDataAdapter
             }
 
             return sb.ToString();
+        }
+
+        public static string GetEdReferenceObjectName(string propertyName)
+        {
+            return propertyName + "_id";
+        }
+
+        public static string GetEdReferenceArrayName(string propertyName)
+        {
+            return propertyName + "_ids";
         }
     }
 }
