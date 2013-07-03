@@ -80,9 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Repository.cs" />
+    <Compile Include="Repository\IBlogRepository.cs" />
+    <Compile Include="Repository\BlogRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -92,6 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\ember-1.0.0-rc.6.js" />
+    <Content Include="Scripts\ember-data-latest.js" />
+    <Content Include="Scripts\handlebars-1.0.0-rc.4.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

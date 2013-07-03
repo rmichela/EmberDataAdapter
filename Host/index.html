@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Blog</title>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+    <script src="Scripts/handlebars-1.0.0-rc.4.js"></script>
+    <script src="Scripts/ember-1.0.0-rc.6.js"></script>
+    <script src="Scripts/ember-data-latest.js"></script>
+    <script src="Scripts/App.js"></script>
+</head>
+    <body>
+        <script type="text/x-handlebars" data-template-name="application">
+            <h1>Blog</h1>
+            <div>
+                {{outlet}}
+            </div>      
+        </script>
+        
+        <script type="text/x-handlebars" data-template-name="posts">
+            <ul>
+                {{#each post in controller}}
+                    <li>
+                        {{#linkTo 'post' post}}
+                            {{post.title}}
+                        {{/linkTo}}
+                    </li>
+                {{/each}}
+            </ul>
+        </script>
+        
+        <script type="text/x-handlebars" data-template-name="post">
+            <p>This is a post called {{title}}</p>
+        </script>
+    </body>
+</html>

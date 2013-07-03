@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Host.Models;
 
-namespace Host
+namespace Host.Repository
 {
-    public interface IRepository
+    public interface IBlogRepository
     {
         IEnumerable<Post> GetPosts();
         Post GetPost(int id);

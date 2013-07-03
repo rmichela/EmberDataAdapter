@@ -2,11 +2,11 @@
 using System.Linq;
 using Host.Models;
 
-namespace Host
+namespace Host.Repository
 {
-    public class Repository : IRepository
+    public class BlogRepository : IBlogRepository
     {
-        private List<Post> _posts = new List<Post>
+        private readonly List<Post> _posts = new List<Post>
             {
                 new Post
                     {

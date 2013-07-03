@@ -2,19 +2,20 @@
 using System.Net;
 using System.Web.Http;
 using Host.Models;
+using Host.Repository;
 
 namespace Host.Controllers
 {
     public class PostsController : ApiController
     {
-        private readonly IRepository _repository;
+        private readonly IBlogRepository _repository;
 
-        public PostsController() : this(new Repository())
+        public PostsController() : this(new BlogRepository())
         {
             
         }
 
-        public PostsController(IRepository repository)
+        public PostsController(IBlogRepository repository)
         {
             _repository = repository;
         }
