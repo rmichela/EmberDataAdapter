@@ -81,6 +81,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\PostiesController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Repository\IBlogRepository.cs" />
     <Compile Include="Repository\BlogRepository.cs" />

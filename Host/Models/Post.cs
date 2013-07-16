@@ -3,6 +3,7 @@ using EmberDataAdapter;
 
 namespace Host.Models
 {
+    [EdAlternatePluralization("Posties")]
     public class Post
     {
         public int Id { get; set; }

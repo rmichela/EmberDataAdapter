@@ -111,7 +111,20 @@ namespace EmberDataAdapter
         private static string GetEdTypeName(JObject obj, bool pluralize)
         {
             Type t = ExtractJObjectType(obj);
-            return EdUtil.NetTypeToEdType(t) + (pluralize ? "s" : "");
+
+            if (pluralize)
+            {
+                // Look for an alternate pluralization
+                var alternateNameAttribute = Attribute.GetCustomAttributes(t)
+                                               .FirstOrDefault(a => a is EdAlternatePluralizationAttribute)
+                                               as EdAlternatePluralizationAttribute;
+                if (alternateNameAttribute != null)
+                {
+                    return EdUtil.ToEdCase(alternateNameAttribute.PluralName);
+                }
+                return EdUtil.ToEdCase(t.Name) + "s";
+            }
+            return EdUtil.ToEdCase(t.Name);
         }
 
         private static bool ShouldSideload(JObject obj, string property)

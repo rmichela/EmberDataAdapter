@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="EdGraphRewriter.cs" />
     <Compile Include="EdContractResolver.cs" />
+    <Compile Include="EdAlternatePluralizationAttribute.cs" />
     <Compile Include="EdSideloadAttribute.cs" />
     <Compile Include="EmberDataJsonConvert.cs" />
     <Compile Include="EdSerializationBinder.cs" />
