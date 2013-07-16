@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
@@ -95,7 +93,7 @@ namespace EmberDataAdapter
                 PreserveReferencesHandling = PreserveReferencesHandling.None,
                 TypeNameHandling = TypeNameHandling.Objects,
                 ContractResolver = new EdContractResolver(),
-                Binder = new EdSerializationBinder(),
+//                Binder = new EdSerializationBinder(),
                 Converters = Converters
             };
             var serializer = JsonSerializer.Create(settings);

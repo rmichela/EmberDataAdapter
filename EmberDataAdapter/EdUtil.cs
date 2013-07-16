@@ -48,5 +48,11 @@ namespace EmberDataAdapter
         {
             return propertyName + "_ids";
         }
+
+        public static string NetTypeToEdType(Type t)
+        {
+            //TODO: Add support for Ember Data type name attribute here
+            return ToEdCase(t.Name);
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace Host.Repository
         void AddPost(Post newPost);
         void DeletePost(int id);
         void UpdatePost(int id, Post updatedPost);
-        IEnumerable<Comment> GetComments();
+        IEnumerable<Comment> GetComments(int postId);
         Comment GetComment(int id);
     }
 }

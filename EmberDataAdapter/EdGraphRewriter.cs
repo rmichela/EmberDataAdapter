@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Newtonsoft.Json.Linq;
 
 namespace EmberDataAdapter
@@ -69,10 +70,13 @@ namespace EmberDataAdapter
 
             // Recursively locate all type definitions
             var directObjectRefs = localRoot.Properties()
+                                            .Where(p => ShouldSideload(localRoot, p.Name))
                                             .Where(p => p.Value.Type == JTokenType.Object)
                                             .Select(p => p.Value)
                                             .Cast<JObject>();
+
             var arrayObjectRefs = localRoot.Properties()
+                                           .Where(p => ShouldSideload(localRoot, p.Name))
                                            .Where(p => p.Value.Type == JTokenType.Array)
                                            .Select(p => p.Value)
                                            .Cast<JArray>()
@@ -81,7 +85,7 @@ namespace EmberDataAdapter
                                            .Cast<JObject>();
   
 
-            foreach (var o in arrayObjectRefs.Union(directObjectRefs))
+            foreach (JObject o in arrayObjectRefs.Union(directObjectRefs))
             {
                 DeconstructImpl(workingSet, o);
             }
@@ -106,9 +110,22 @@ namespace EmberDataAdapter
 
         private static string GetEdTypeName(JObject obj, bool pluralize)
         {
-            return obj.Properties().Where(p => p.Name == "$type")
-                                   .Select(p => p.Value.Value<string>() + (pluralize ? "s" : ""))
-                                   .First();
+            Type t = ExtractJObjectType(obj);
+            return EdUtil.NetTypeToEdType(t) + (pluralize ? "s" : "");
+        }
+
+        private static bool ShouldSideload(JObject obj, string property)
+        {
+            Type t = ExtractJObjectType(obj);
+            var sideloadProps = t.GetProperties()
+                                 .Where(p => p.GetCustomAttributes().Any(a => a is EdSideloadAttribute))
+                                 .Select(p => EdUtil.ToEdCase(p.Name));
+
+            var sideloadFields = t.GetFields()
+                                  .Where(f => f.GetCustomAttributes().Any(a => a is EdSideloadAttribute))
+                                  .Select(f => EdUtil.ToEdCase(f.Name));
+
+            return sideloadProps.Union(sideloadFields).Any(p => p == property);
         }
 
         private static JToken GetEdIdFieldValue(JObject obj)
@@ -116,6 +133,13 @@ namespace EmberDataAdapter
             // TODO: Add annotation support
             const string propertyFieldName = "id";
             return obj.Properties().Where(p => p.Name == propertyFieldName).Select(p => p.Value).First();
+        }
+
+        private static Type ExtractJObjectType(JObject obj)
+        {
+            var typeProperty = obj.Properties().First(p => p.Name == "$type");
+            var typeName = typeProperty.Value.Value<string>();
+            return Type.GetType(typeName);
         }
     }
 }

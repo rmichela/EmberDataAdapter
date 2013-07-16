@@ -74,14 +74,14 @@ namespace Host.Repository
             AddPost(updatedPost);
         }
 
-        public IEnumerable<Comment> GetComments()
+        public IEnumerable<Comment> GetComments(int postId)
         {
-            return GetPosts().SelectMany(post => post.Comments);
+            return GetPosts().Where(p => p.Id == postId).SelectMany(p => p.Comments);
         }
 
         public Comment GetComment(int id)
         {
-            return GetComments().FirstOrDefault(comment => comment.Id == id);
+            return GetPosts().SelectMany(p => p.Comments).FirstOrDefault(comment => comment.Id == id);
         }
     }
 }

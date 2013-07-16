@@ -29,7 +29,13 @@
         </script>
         
         <script type="text/x-handlebars" data-template-name="post">
-            <p>This is a post called {{title}}</p>
+            <h3>This is a post called {{title}}</h3>
+            
+            <ul>
+                {{#each c in comments}}
+                    <li>{{c.body}}</li>
+                {{/each}}
+            </ul>
         </script>
     </body>
 </html>
