@@ -116,8 +116,8 @@ namespace EmberDataAdapter
             {
                 // Look for an alternate pluralization
                 var alternateNameAttribute = Attribute.GetCustomAttributes(t)
-                                               .FirstOrDefault(a => a is EdAlternatePluralizationAttribute)
-                                               as EdAlternatePluralizationAttribute;
+                                               .FirstOrDefault(a => a is EdAlternateNameAttribute)
+                                               as EdAlternateNameAttribute;
                 if (alternateNameAttribute != null)
                 {
                     return EdUtil.ToEdCase(alternateNameAttribute.PluralName);

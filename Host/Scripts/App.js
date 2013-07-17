@@ -24,58 +24,6 @@ App.Store = DS.Store.extend({
     adapter: 'DS.RESTAdapter'
 });
 
-// Fixture data
-App.Post.FIXTURES = [
-    {
-        id: 1,
-        title: "Fixture post 1",
-        comments: [1, 2, 3]
-    },
-    {
-        id: 2,
-        title: "Fixture post 2",
-        comments: [4]
-    },
-    {
-        id: 3,
-        title: "Fixture post 3",
-        comments: [5, 6]
-    }
-];
-
-App.Comment.FIXTURES = [
-    {
-        id: 1,
-        body: "Fixture comment 1",
-        post: [1]
-    },
-    {
-        id: 2,
-        body: "Fixture comment 2",
-        post: [1]
-    },
-    {
-        id: 3,
-        body: "Fixture comment 3",
-        post: [1]
-    },
-    {
-        id: 4,
-        body: "Fixture comment 4",
-        post: [2]
-    },
-    {
-        id: 5,
-        body: "Fixture comment 5",
-        post: [3]
-    },
-    {
-        id: 6,
-        body: "Fixture post 6",
-        post: [3]
-    }
-];
-
 // Routing
 App.Router.map(function () {
     this.resource('posts', { path: '/' });
