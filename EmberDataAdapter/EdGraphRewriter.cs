@@ -42,14 +42,34 @@ namespace EmberDataAdapter
             var newRoot = new JObject();
             foreach (var typeCollection in workingSet)
             {
-                var typeArray = new JArray(typeCollection.Value.ToArray());
-                newRoot.Add(typeCollection.Key, typeArray);
+                // Extract the singular root, if there is one
+                if (root.Type == JTokenType.Object && typeCollection.Key == GetEdTypeName(root as JObject, true))
+                {
+                    JObject singularRoot = typeCollection.Value.First(o => GetEdIdFieldValue(o).Value<string>() == GetEdIdFieldValue(root as JObject).Value<string>());
+                    typeCollection.Value.Remove(singularRoot);
+                    newRoot.Add(GetEdTypeName(root as JObject, false), singularRoot);                    
+                }
+
+                if (typeCollection.Value.Count > 0)
+                {
+                    var typeArray = new JArray(typeCollection.Value.ToArray());
+                    newRoot.Add(typeCollection.Key, typeArray);
+                }
             }
 
             // Remove $type properties
-            foreach (JObject c in newRoot.Children().SelectMany(c => c.Children()).SelectMany(c => c.Children()))
+            foreach (JObject o in newRoot.Children()                                       
+                                         .SelectMany(c => c.Children())
+                                         .Where(c => c.Type == JTokenType.Array)
+                                         .SelectMany(c => c.Children()))
             {
-                c.Remove("$type");
+                o.Remove("$type");
+            }
+            foreach (JObject o in newRoot.Children()
+                                          .SelectMany(c => c.Children())
+                                          .Where(c => c.Type == JTokenType.Object))
+            {
+                o.Remove("$type");
             }
 
             return newRoot;
@@ -112,17 +132,22 @@ namespace EmberDataAdapter
         {
             Type t = ExtractJObjectType(obj);
 
+            // Look for an alternate singular name
+            var alternateNameAttribute = Attribute.GetCustomAttributes(t)
+                                                  .FirstOrDefault(a => a is EdAlternateNameAttribute)
+                                         as EdAlternateNameAttribute;
+
+            if (pluralize && alternateNameAttribute != null)
+            {
+                return EdUtil.ToEdCase(alternateNameAttribute.PluralName);
+            }
             if (pluralize)
             {
-                // Look for an alternate pluralization
-                var alternateNameAttribute = Attribute.GetCustomAttributes(t)
-                                               .FirstOrDefault(a => a is EdAlternateNameAttribute)
-                                               as EdAlternateNameAttribute;
-                if (alternateNameAttribute != null)
-                {
-                    return EdUtil.ToEdCase(alternateNameAttribute.PluralName);
-                }
                 return EdUtil.ToEdCase(t.Name) + "s";
+            }
+            if (alternateNameAttribute != null)
+            {
+                return EdUtil.ToEdCase(alternateNameAttribute.SingularName);
             }
             return EdUtil.ToEdCase(t.Name);
         }

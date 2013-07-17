@@ -3,12 +3,12 @@ using EmberDataAdapter;
 
 namespace Host.Models
 {
-    [EdAlternateName("Post", "Posties")]
+//    [EdAlternateName("Posty", "Posties")]
     public class Post
     {
         public int Id { get; set; }
         public string Title { get; set; }
-//        [EdSideload]
+        [EdSideload]
         public IEnumerable<Comment> Comments { get; set; } 
     }
 }

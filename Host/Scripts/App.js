@@ -15,9 +15,9 @@ DS.RESTAdapter.reopen({
     namespace: 'api'
 });
 
-DS.RESTAdapter.configure("plurals", {
-    post: "posties"
-});
+//DS.RESTAdapter.configure("plurals", {
+//    post: "posties"
+//});
 
 App.Store = DS.Store.extend({
     revision: 12,
