@@ -8,7 +8,7 @@ namespace Host.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        [EdSideload]
+        [Sideload]
         public IEnumerable<Comment> Comments { get; set; } 
     }
 }

@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Runtime.Serialization;
 
-namespace EmberDataAdapter
+namespace EmberDataAdapter.Internal
 {
     internal class EdSerializationBinder : SerializationBinder
     {

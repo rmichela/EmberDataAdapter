@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EmberDataAdapter.Internal;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace EmberDataAdapter
@@ -35,7 +36,7 @@ namespace EmberDataAdapter
             {
                 serializer.Serialize(writer, value);
                 var root = (JObject)writer.Token;
-                root = EdGraphRewriter.Deconstruct(root);
+                root = GraphRewriter.Deconstruct(root);
 
                 return root.ToString(formatting);
             }

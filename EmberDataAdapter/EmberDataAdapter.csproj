@@ -59,13 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EdGraphRewriter.cs" />
-    <Compile Include="EdContractResolver.cs" />
-    <Compile Include="EdAlternateNameAttribute.cs" />
-    <Compile Include="EdSideloadAttribute.cs" />
+    <Compile Include="AlternateNameAttribute.cs" />
+    <Compile Include="Internal\EdContractResolver.cs" />
+    <Compile Include="Internal\EdSerializationBinder.cs" />
+    <Compile Include="Internal\EdUtil.cs" />
+    <Compile Include="Internal\GraphRewriter.cs" />
+    <Compile Include="SideloadAttribute.cs" />
     <Compile Include="EmberDataJsonConvert.cs" />
-    <Compile Include="EdSerializationBinder.cs" />
-    <Compile Include="EdUtil.cs" />
     <Compile Include="EmberDataMediaTypeFormatter.cs" />
     <Compile Include="Internals.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

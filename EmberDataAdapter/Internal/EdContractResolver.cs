@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json.Serialization;
 
-namespace EmberDataAdapter
+namespace EmberDataAdapter.Internal
 {
     internal class EdContractResolver : DefaultContractResolver
     {

@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json.Linq;
 
-namespace EmberDataAdapter
+namespace EmberDataAdapter.Internal
 {
-    internal static class EdGraphRewriter
+    internal static class GraphRewriter
     {
         public static JObject Deconstruct(JToken root)
         {
@@ -134,8 +134,8 @@ namespace EmberDataAdapter
 
             // Look for an alternate singular name
             var alternateNameAttribute = Attribute.GetCustomAttributes(t)
-                                                  .FirstOrDefault(a => a is EdAlternateNameAttribute)
-                                         as EdAlternateNameAttribute;
+                                                  .FirstOrDefault(a => a is AlternateNameAttribute)
+                                         as AlternateNameAttribute;
 
             if (pluralize && alternateNameAttribute != null)
             {
@@ -156,11 +156,11 @@ namespace EmberDataAdapter
         {
             Type t = ExtractJObjectType(obj);
             var sideloadProps = t.GetProperties()
-                                 .Where(p => p.GetCustomAttributes().Any(a => a is EdSideloadAttribute))
+                                 .Where(p => p.GetCustomAttributes().Any(a => a is SideloadAttribute))
                                  .Select(p => EdUtil.ToEdCase(p.Name));
 
             var sideloadFields = t.GetFields()
-                                  .Where(f => f.GetCustomAttributes().Any(a => a is EdSideloadAttribute))
+                                  .Where(f => f.GetCustomAttributes().Any(a => a is SideloadAttribute))
                                   .Select(f => EdUtil.ToEdCase(f.Name));
 
             return sideloadProps.Union(sideloadFields).Any(p => p == property);

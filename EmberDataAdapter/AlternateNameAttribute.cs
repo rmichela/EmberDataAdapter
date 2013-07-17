@@ -3,7 +3,7 @@
 namespace EmberDataAdapter
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
-    public class EdAlternateNameAttribute : Attribute
+    public class AlternateNameAttribute : Attribute
     {
         private readonly string _singularName;
         private readonly string _pluralName;
@@ -11,7 +11,7 @@ namespace EmberDataAdapter
         public string SingularName { get { return _singularName; } }
         public string PluralName { get { return _pluralName; } }
 
-        public EdAlternateNameAttribute(string singularName, string pluralName)
+        public AlternateNameAttribute(string singularName, string pluralName)
         {
             _singularName = singularName;
             _pluralName = pluralName;

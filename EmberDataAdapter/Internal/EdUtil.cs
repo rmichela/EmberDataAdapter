@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Text;
 
-namespace EmberDataAdapter
+namespace EmberDataAdapter.Internal
 {
     internal static class EdUtil
     {

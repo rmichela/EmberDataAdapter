@@ -6,6 +6,7 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using EmberDataAdapter.Internal;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -101,7 +102,7 @@ namespace EmberDataAdapter
             {
                 serializer.Serialize(writer, value);
                 var root = writer.Token;
-                root = EdGraphRewriter.Deconstruct(root);
+                root = GraphRewriter.Deconstruct(root);
 
                 using (var streamWriter = new StreamWriter(writeStream, effectiveEncoding))
                 {

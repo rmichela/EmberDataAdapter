@@ -1,4 +1,5 @@
 ﻿using EmberDataAdapter;
+using EmberDataAdapter.Internal;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
