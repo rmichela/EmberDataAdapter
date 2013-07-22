@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlternateNameAttribute.cs" />
+    <Compile Include="EmberDataController.cs" />
     <Compile Include="Internal\EdContractResolver.cs" />
     <Compile Include="Internal\EdSerializationBinder.cs" />
     <Compile Include="Internal\EdUtil.cs" />

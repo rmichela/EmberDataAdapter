@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ModelBinding;
+using System.Web.Http.ModelBinding.Binders;
+using EmberDataAdapter;
 using Host.Models;
 using Host.Repository;
 
 namespace Host.Controllers
 {
-    public class CommentsController : ApiController
+    public class CommentsController : EmberDataController<Comment>
     {
         private readonly IBlogRepository _repository;
 
@@ -20,14 +23,14 @@ namespace Host.Controllers
             _repository = repository;
         }
 
-        public Comment Get(int id)
+        protected override IEnumerable<Comment> GetAll()
         {
-            return _repository.GetComment(id);
+            throw new System.NotImplementedException();
         }
 
-        public IEnumerable<Comment> Get([FromUri]List<int> ids)
+        protected override Comment GetOne(int id)
         {
-            return ids.Select(Get);
+            return _repository.GetComment(id);
         }
     }
 }
